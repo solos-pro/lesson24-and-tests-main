@@ -6,14 +6,21 @@ from functools import wraps
 
 
 def logger(func):
-    # TODO напишите функцию-декоратор здесь
-    pass
+    @wraps(func)
+    def _wrapper(*args, **kwargs):
+        print(func.__name__)
+        try:
+            func(*args, **kwargs)
+        except ZeroDivisionError:
+            print("ZeroDivisionError")
+    return _wrapper
 
 
 # Код для самопроверки
 @logger
 def function_with_error():
     var = 1/0
+    return var
 
 
 @logger

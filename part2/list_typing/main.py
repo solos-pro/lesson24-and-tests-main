@@ -6,5 +6,8 @@
 # Для успешного прохождения тестов
 # при написании аннотаций используйте, пожалуйста, библиотеку typing
 
-def sum_arr(arr):
+import typing
+
+
+def sum_arr(arr: typing.List[int]) -> int:
     return sum(arr)

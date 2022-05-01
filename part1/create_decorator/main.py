@@ -11,8 +11,8 @@ def logger(func):
         print(func.__name__)
         try:
             func(*args, **kwargs)
-        except ZeroDivisionError:
-            print("ZeroDivisionError")
+        except: # ZeroDivisionError
+            print("exc_has_appeared")
     return _wrapper
 
 

@@ -6,9 +6,24 @@
 from functools import wraps
 
 
-def retry():
-    # TODO напишите код декоратора здесь
-    pass
+def retry(repeat):
+    def decor_inner(func):
+        @wraps(func)
+        def _wrapper(*args, **kwargs):
+            counter = 0
+            while True:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    if counter > repeat:
+                        print("exc_has_appeared")
+                    else:
+                        raise Exception
+                    func(*args, **kwargs)
+                except:
+                    print("limit overwhelmed")
+        return _wrapper
+    return decor_inner
 
 
 # Код для самопроверки

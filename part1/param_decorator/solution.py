@@ -25,9 +25,13 @@ class Counter:
     v = 0
 
 
-@retry(5)
+@retry(3)
 def test_func():
     Counter.v += 1
     if Counter.v < 3:
         raise ValueError
     print("test_func has finished")
+
+
+if __name__ == "__main__":
+    test_func()

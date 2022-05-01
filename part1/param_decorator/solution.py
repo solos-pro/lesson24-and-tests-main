@@ -12,7 +12,7 @@ def retry(n):
                 try:
                     return func(*args, **kwargs)
                 except Exception as e:
-                    print("exc_has_appeared")
+                    print("exc_has_appeared", counter)
                     counter += 1
                     if counter > n:
                         raise e

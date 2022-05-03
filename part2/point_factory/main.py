@@ -6,6 +6,7 @@
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class Point:
     x: float
@@ -13,9 +14,8 @@ class Point:
 
 
 def point_factory(n: int) -> List[Point]:
-    # TODO напишите Ваш код здесь
-    pass
+    return [Point(i, i) for i in range(1, n+1)]
 
 
 if __name__ == "__main__":
-    print(point_factory(8))
+    print (list(point_factory(8)))

@@ -13,6 +13,10 @@
 from dataclasses import dataclass
 from typing import List, Dict
 
+import marshmallow
+import marshmallow_dataclass
+
+
 vk_data = {
    "response": {
        "count": 1,
@@ -42,10 +46,34 @@ vk_data = {
 
 # TODO определите классы OnlineInfo, Occupation и University.
 
+
+@dataclass
+class University:
+    chair_name: str
+    id: int
+    name: str
+
+
+@dataclass
+class Occupation:
+    id: int
+    type: str
+
+
+@dataclass
+class OnlineInfo:
+    visible: bool
+    last_seen: int
+
+
 @dataclass
 class User:
-    # TODO дополните класс User
-    pass
+    id: int
+    first_name: str
+    last_name: str
+    online_info: OnlineInfo
+    occupation: Dict[str, Occupation]
+    universities: List[University]
 
 
 @dataclass
@@ -57,3 +85,10 @@ class VkResponse:
 @dataclass
 class VkData:
     response: VkResponse
+
+
+# SomeData = marshmallow_dataclass.class_schema(VkData)
+# exhact_data = SomeData().load(vk_data)
+#
+# print(exhact_data)
+
